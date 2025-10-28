@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   blue:
-    image: nginx:latest
+    image: nginxdemos/hello
     container_name: blue_app
     ports:
       - "${BLUE_PORT}:80"
@@ -14,7 +14,7 @@ services:
     entrypoint: ["/nginx-entrypoint.sh"]
 
   green:
-    image: nginx:latest
+    image: nginxdemos/hello
     container_name: green_app
     ports:
       - "${GREEN_PORT}:80"
