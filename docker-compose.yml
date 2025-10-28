@@ -1,21 +1,27 @@
-version: "3.8"
-
 services:
   blue:
-    image: nginxdemos/hello
+    image: nginx:latest
     container_name: blue_app
     ports:
       - "${BLUE_PORT}:80"
+    volumes:
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx-entrypoint.sh:/nginx-entrypoint.sh"
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx.template:/etc/nginx/conf.d/default.conf"
     environment:
       - COLOR=blue
+    entrypoint: ["/nginx-entrypoint.sh"]
 
   green:
-    image: nginxdemos/hello
+    image: nginx:latest
     container_name: green_app
     ports:
       - "${GREEN_PORT}:80"
+    volumes:
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx-entrypoint.sh:/nginx-entrypoint.sh"
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx.template:/etc/nginx/conf.d/default.conf"
     environment:
       - COLOR=green
+    entrypoint: ["/nginx-entrypoint.sh"]
 
   reverse-proxy:
     image: nginx:latest
@@ -23,9 +29,11 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.template:/etc/nginx/conf.d/default.conf
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx-entrypoint.sh:/nginx-entrypoint.sh"
+      - "C:/Users/HP/Desktop/devops-stage2-bluegreen/nginx.template:/etc/nginx/conf.d/default.conf"
     environment:
-      - ACTIVE_COLOR=${ACTIVE_POOL}
+      - ACTIVE_COLOR=${ACTIVE_COLOR}
+    entrypoint: ["/nginx-entrypoint.sh"]
 
 networks:
   default:
