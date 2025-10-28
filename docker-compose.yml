@@ -1,0 +1,11 @@
+# Environment Variables Example
+
+# Blue-Green app versions
+BLUE_PORT=8081
+GREEN_PORT=8082
+
+# Active deployment color (blue or green)
+ACTIVE_COLOR=blue
+
+# Application name
+APP_NAME=bluegreen-app
