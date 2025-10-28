@@ -1,7 +1,7 @@
 services:
   blue:
     image: nginx:latest
-    container_name: blue_app
+    container_name: blue
     ports:
       - "${BLUE_PORT}:80"
     volumes:
@@ -13,7 +13,7 @@ services:
 
   green:
     image: nginx:latest
-    container_name: green_app
+    container_name: green
     ports:
       - "${GREEN_PORT}:80"
     volumes:
