@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 if [ -z "$ACTIVE_COLOR" ]; then
@@ -9,6 +8,7 @@ fi
 
 echo "Starting Nginx with active color: $ACTIVE_COLOR"
 
+# Safely substitute environment variables and reload config
 envsubst '$ACTIVE_COLOR' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
 cp /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 rm /etc/nginx/conf.d/default.conf.tmp
