@@ -10,6 +10,7 @@ fi
 echo "Starting Nginx with active color: $ACTIVE_COLOR"
 
 envsubst '$ACTIVE_COLOR' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
-mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
+cp /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
+rm /etc/nginx/conf.d/default.conf.tmp
 
 nginx -g "daemon off;"
