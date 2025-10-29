@@ -8,8 +8,7 @@ fi
 
 echo "Starting Nginx with active color: $ACTIVE_COLOR"
 
-# Generate the new config into a temp file
-envsubst '$ACTIVE_COLOR' < /etc/nginx/conf.d/default.conf > /tmp/default.conf
+envsubst '$ACTIVE_COLOR' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
+mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 
-# Start Nginx using the temporary config instead of overwriting the original
-nginx -c /tmp/default.conf -g "daemon off;"
+nginx -g "daemon off;"
