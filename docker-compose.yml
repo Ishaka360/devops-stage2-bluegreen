@@ -16,8 +16,8 @@ reverse-proxy:
   ports:
     - "8080:80"
   volumes:
-    - ./nginx.template:/etc/nginx/conf.d/default.conf
-    - ./nginx-entrypoint.sh:/docker-entrypoint.d/custom-entrypoint.sh:ro
+    - ../nginx.template:/etc/nginx/conf.d/default.conf
+    - ../nginx-entrypoint.sh:/nginx-entrypoint.sh
   depends_on:
     - blue
     - green
