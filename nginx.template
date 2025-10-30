@@ -1,4 +1,3 @@
-cat > nginx.template << 'EOF'
 upstream backend {
     server ${ACTIVE_COLOR}:80;
 }
@@ -10,4 +9,3 @@ server {
         proxy_pass http://backend;
     }
 }
-EOF
